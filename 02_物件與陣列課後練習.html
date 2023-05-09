@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_物件與陣列</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <style>
+        .highlight{
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 課後練習題目 -->
+    <!-- 書店要建立會員資料系統，需要以下資料欄位
+    會員名字、會員聯繫方式、會員喜好書籍種類(多個)
+    請畫書以下包含多筆會員資料的結構，以及他們之間的從屬關係如何? -->
+    
+    <script>
+    var bookstore={
+        member:[
+            {
+                name:"王大維",
+                phone:"0912-345-678",
+                style:["科幻","推理","愛情"]
+            },{
+                name:"王二維",
+                phone:"0923-456-781",
+                style:["推理","工具書"]
+            },{
+                name:"王小維",
+                phone:"0987-654-321",
+                style:["文藝","設計"]
+            }
+            
+        ]
+    }
+    </script>
+</body>
+</html>

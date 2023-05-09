@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.時間函數</title>
+<style>
+    .text{
+        position: relative;
+    }
+</style>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <h2 class="text"></h2>
+    <script>
+        //setTimeout(引數,時間)
+        console.clear
+        console.log("start");
+        // function hello(){
+        //     console.log("hello")
+        // }
+        // setTimeout(hello,2000)
+        //可以先做一個hello函數 或者如下方直接把引數寫成函數型式
+        var timer1 = setTimeout(function(){
+            console.log("hello")
+        },2000);
+        clearTimeout(timer1); //clearTimeout終止執行
+
+
+        //倒數計時器 
+        var time=50
+        // function countDown(){
+        //     console.log("倒數"+time+"秒")
+        //     time-=1    //等於 time=time-1
+        //     if(time>0){
+        //         setTimeout(countDown,1000)
+        //     }
+        // };]
+        function countDown(){
+            console.log("倒數"+time+"秒");
+            $("h2.text").text("倒數"+time+"秒");
+            $("h2.text").css("left","+=20px");
+
+            time-=1    //等於 time=time-1
+            if(time<=0){
+                clearInterval(timer2);
+            }
+        }
+        var timer2 = setInterval(countDown,1000)
+        countDown();
+    </script>
+</body>
+</html>

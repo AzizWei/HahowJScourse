@@ -1,0 +1,151 @@
+$colorOrange:#E55A54;
+$colorBlue:#0C4475;
+
+@mixin size($w,$h:$w){
+    width: $w;
+    height: $h;
+}
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html,body{
+    margin: 0;
+    padding: 0;
+    @include size(100%);
+    @include flexCenter;
+    background-color:$colorOrange ;
+    font-family: "微軟正黑體";
+}
+
+// *{
+//     // border: 1px solid #000;
+// }
+.wrap{
+    display: flex;
+}
+.monster{
+    @include size(110px);
+    background-color: $colorOrange;
+    border-radius: 20px;
+    @include flexCenter;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+    box-shadow: 0px 10px 20px rgba(black,.3);
+    .eye{
+        @include size(40%);
+        border-radius: 50%;
+        background-color: #fff;
+        @include flexCenter;
+
+        .eyeball{
+            @include size(50%);
+            border-radius:50%;
+            background-color: $colorBlue; 
+        }
+    }
+
+    .mouth{
+        @include size(32%,12px);
+        background-color: #fff;
+        border-radius: 12px;
+        margin-top: 15%;
+    }
+
+    &::before,&::after{
+        content: "";
+        display: block;
+        @include size(20%,10px);
+        background-color:#fff;
+        position: absolute;
+        left: 50%;
+        top: -10px;    
+        border-radius: 10px;
+    }
+
+    &::before{
+        transform: translateX(-70%) rotate(45deg);
+        
+    }
+    &::after{
+        transform: translateX(-30%) rotate(-45deg);
+
+    }
+
+    &.blue{
+        background-color: $colorBlue;
+        .mouth,.eyeball{
+            background-color: $colorOrange;
+        }
+    }
+
+
+    //動畫
+
+    @keyframes jumping {
+        50% { 
+            top: 0;
+            box-shadow: 0px 10px 20px rgba(black,.3);
+        }
+        100% { 
+            top: -50px;
+            box-shadow: 0px 120px 50px rgba(black,.3);
+        }
+    }
+     animation: jumping 0.8s infinite alternate;
+
+
+
+     @keyframes eyemove {
+        0%,10%{
+            transform: translateX(50%);
+        }
+        90%,100%{
+            transform: translateX(-50%);
+        }
+     }
+
+     .eyeball{
+        animation: eyemove 1.6s infinite alternate;
+     }
+}
+
+
+
+h2{
+    color: #fff;
+    font-size: 40px;
+    margin-right: 50px;
+}
+
+h3{
+    margin-top: 0px;
+    opacity: .5;
+    color: #fff;
+}
+
+.pageLoading{
+    position: fixed;
+    @include size(100%);
+    background-color: $colorBlue;
+    left: 0;
+    top: 0;
+    @include flexCenter;
+    flex-direction: column;
+}
+.loading{
+    @include size(200px,8px);
+    background-color: #fff;
+    margin-top: 80px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .bar{
+        @include size(0%,100%);
+        background-color: $colorOrange;
+    }
+}

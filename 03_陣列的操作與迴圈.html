@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>03_陣列的操作與迴圈</title>
+</head>
+<body>
+    <ul class="fruits"></ul>
+    <ul class="books"></ul>
+   <script>
+        console.clear()
+        /*while迴圈*/
+        var tree=10
+        while(tree<100){
+            console.log("澆水"+tree+"公分")
+            tree +=10
+        }
+        var ar = ["hello","world","!"]
+        while(ar.length>0){
+            console.log(ar)
+            console.log(ar.pop())
+        }
+        /*for迴圈*/
+        for(var i=0;i<5;i++){
+            console.log("i:"+i)
+        }
+        console.log(i)
+        /*結合02檔案書本陣列*/
+        var books_all=[
+            {
+                name:"飢餓遊戲",
+                price:350
+            },
+            {
+                name:"星火燎原",
+                price:400
+            },
+            {
+                name:"自由幻夢",
+                price:380
+            }
+        ]
+        books_all.push({
+            name:"newone",
+            price:"50"
+        })
+        for(var i=0;i<books_all.length;i++){
+            console.log(books_all[i].name+"是"+books_all[i].price+"元")
+        }
+        console.clear()
+        /*水果迴圈*/
+        var fruits =["西瓜","香蕉","芭樂","水蜜桃","鳳梨"]
+        for(var i=0;i<fruits.length;i++){
+            $("ul.fruits").append("<li>"+fruits[i]+"</li>")
+        }
+        /*小說迴圈*/
+        var discount=0.8
+        var novels_all=[
+            {
+                name:"時間迴旋",
+                price:350,
+                discount:true
+            },
+            {
+                name:"時間軸",
+                price:400,
+                discount:true
+            },
+            {
+                name:"時間漩渦",
+                price:450,
+                discount:false
+            },
+            {
+                name:"螢幕陷阱",
+                price:200,
+                discount:false
+            },
+        ]
+        var nowbook
+        for(var i=0;i<novels_all.length;i++){
+            nowbook = novels_all[i]
+            // console.log(nowbook)
+            if(nowbook.discount){
+                console.log(nowbook.name+"特價"+nowbook.price*discount+"元")
+            }else{
+                console.log(nowbook.name+"原價"+nowbook.price+"元")
+            }
+        }
+        /*全部小說的總價*/
+        var total = 0
+        for(var i=0;i<novels_all.length;i++){
+            // total += novels_all[i].price  //也可以寫這樣 total = total+novels_all[i].price
+            if(nowbook.discount){
+                total+=nowbook.price*discount
+            }else{
+                total+=nowbook.price
+            }
+        }
+        console.log("總價:"+total+"元")
+        
+        /*姓氏+性別辨認 陣列展示*/
+        var people = [
+            {
+                familyname: "王",
+                male:true
+            },
+            {
+                familyname: "陳",
+                male:false
+            },
+            {
+                familyname: "何",
+                male:false
+            },
+        ]
+        var newpeople =[]
+        for(var i=0;i<people.length;i++){
+            if(people[i].male){
+                newpeople[i]=people[i].familyname+"先生"
+            }else{
+                newpeople[i]=people[i].familyname+"小姐"
+            }
+        }
+        console.log(newpeople.join(" / "))
+
+        var peopletext = newpeople.join("/")
+        var input = peopletext
+        var inputarrary =input.split("/")   /*split 是把後方字串作為分隔的依據*/
+        for(var i=0;i<inputarrary.length;i++){
+            console.log(inputarrary[i]+" 你好!")
+        }
+
+   </script>
+
+</body>
+</html>

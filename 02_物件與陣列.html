@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02_物件與陣列</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <style>
+        .highlight{
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 課間變數練習 -->
+    <h2>標題</h2>
+    <ul></ul>
+    <script>
+        // /*JQuery基礎code概念*/
+        // $("h2").text("物件") /*用JQuery方式強制修改內文*/
+        // $("h2").css("color","red") /*新增css樣式*/
+        // // $("h2").addClass("highlight") /*加入CSS樣式 但style選擇器會優先於此*/
+        // $("h2").removeClass("highlight") /*移除css樣式*/
+        // // $("h2").html("<a href='http://www.google.com'>Google</a>")/*新增內容到HTML裡*/
+        $("h2").append("我放後面")
+        $("h2").prepend("我放前面")
+
+        console.clear()
+        var books = []
+        // var books[0] = "飢餓遊戲"
+        // var books[1] = "星火燎原"
+        // var books[2] = "自由幻夢"
+        var books = ["飢餓遊戲","星火燎原","自由幻夢"]
+        books.length  /*獲得陣列長度*/
+        books.reverse() /*順序相反*/
+        books.push("新書") /*新增項目至陣列*/
+        books.pop() /*移除陣列最後一項*/
+
+        
+
+
+        $("ul").html("")
+        $("ul").append("<li>"+books[0]+"</li>")
+        $("ul").append("<li>"+books[1]+"</li>")
+        $("ul").append("<li>"+books[2]+"</li>")
+
+        /*陣列內有物件*/
+        var store={}
+        store["name"]="悅樂書店"
+        store["phone"]="(02)12345678"
+        store["address"]="台中市某某區某某路某號"
+        /*物件內有陣列*/
+        var store={
+            name:"悅樂書店",
+            phone:"(02)12345678",
+            address:"台中市某某區某某路某號"
+        }
+        // /*把陣列跟物件用.結合*/
+        // console.log(store.name)
+
+        var books1=["a","b"]
+        var books2=["c","d"]
+        // books1.concat(books2) /*連接前後陣列*/
+        var books_all=[
+            {
+                name:"飢餓遊戲",
+                price:350
+            },{
+                name:"星火燎原",
+                price:400
+            },{
+                name:"自由幻夢",
+                price:320
+            }
+        ]
+
+        var shop = {
+            name:"蝦皮商家",
+            item:[
+                {
+                    name:"辣椒醬",
+                    price:300
+                },{
+                    name:"XO醬",
+                    price:400
+                }
+            ]
+        }
+    </script>
+</body>
+</html>

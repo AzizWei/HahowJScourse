@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>04_JS字串的處理</title>
+
+    <style>
+        .book{
+            width: 400px;
+            padding: 10px;
+            list-style: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .book h3,h4,h5{
+            margin: 10;
+        }
+        .book h5{
+            margin-top: 20px;
+            opacity: .8;
+            transition: .5s;
+        }
+        .book:hover{
+            background: #f3f3f3;
+        }
+        .point{
+            background-color: yellow;
+            padding:0 5px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="books"></ul>
+   <script>
+        var bookdata = "法醫．屍體．解剖室1：犯罪搜查216問,道格拉斯‧萊爾,79折356元,請問醫生：哪種精神錯亂會讓人出現幻聽，覺得有人要他去殺人？有沒有哪種藥物能模擬精神分裂症？移植器官所屬DNA會不會沿納受贈者的DNA模式？法醫能不能看出被害人生前曾跌落樓梯？有可能把鑰匙藏在自己皮下嗎？凶手以勒頸的方式殺人要多久才會致人於死？怎樣做才能完全毀屍滅跡？,https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/E05/015/49/E050154971.jpg&v=64093fbek&w=348&h=348;法醫．屍體．解剖室2：謀殺診斷書188問,道格拉斯‧萊爾,79折356元,請問醫生：肉毒桿菌可以用來做為謀殺工具嗎？眼盲有可能偽裝嗎？．精神鑑定是怎麼進行的？把水管清潔劑注射到一個人的體內會發生什麼事？把氰化物加入用於隱形眼鏡用的生理食鹽水中，可以做為殺人手段嗎？被扼死的案件能否佯裝成死者墜樓身亡？已埋葬十二小時的屍體會不會產生氣味？人有可能躲進一具屍體中嗎？莎士比亞《泰特斯‧安特洛尼克斯》中的泰特斯如何把屍體磨碎，細到可以做成肉餅？「被打到橫隔膜痙攣」是什麼意思？,https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/E05/002/31/E050023141.jpg&v=5a7c1191k&w=348&h=348;法醫．屍體．解剖室3：重返犯罪現場157道問題,道格拉斯‧萊爾,79折300元,請問醫生：一個人有可能經歷車禍與脾臟破裂仍大難不死嗎？肋骨斷裂的人有辦法游泳嗎？如何用冰鑿從頸背殺死一個人？要讓一個喝醉的人昏迷兩天，應該朝他的哪個部位開槍？在食物中摻玻璃粉末能殺人嗎？死後兩個月還查不查得出屍體內的嗎啡？一把刀所能造成最致命的傷口為何？,https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/E05/001/65/E050016541.jpg&v=59df858ck&w=348&h=348"
+
+        var temp = bookdata.split(";")
+        var books= []
+        for(var i=0;i<temp.length;i++){
+            var splitdata = temp[i].split(",")
+            console.log(splitdata)
+
+            var discountdata = splitdata[2].split("折")
+            console.log(discountdata)
+            var discount = discountdata[0]/100
+            console.log(discount)
+            var discountprice =parseInt(discountdata[1].split("元")[0]) 
+            console.log(discountprice)
+
+            console.clear
+
+            books[i]={
+                name:splitdata[0],
+                author:splitdata[1],
+                discount:discount,
+                price:Math.ceil(discountprice/discount),  //把含有小數點轉為整數
+                description:splitdata[3],
+                imaurl:splitdata[4]
+            }
+            console.log(books[i])
+        }
+
+        for(var i=0;i<books.length;i++){
+            var book =books [i] //從一堆書裡面拿一本書
+            $("ul.books").append("<li class='book'><img src='"+book.imaurl+"'><h5>"+book.author+"</h5><h3>"+book.name+"</h3><h4>"+book.price+" ("+book.discount*100+"折)"+"</h4><p>"+book.description.slice(0,50).replace(/(人)/g,"<span class='point'>$1</span>")+"...</p></li>")
+            //函數.replace("","")只會取代搜尋到的第一個字，但結合Regex的用法可以把符合的全部項目篩出並取代
+            //regex的用法: /字串/g   
+            //當我把字串小括號起來如 /(字串)/g 這裡$1是指regex選取出來的特定範圍的第一組 就不用修改兩次所抓取的字串了
+        }
+
+        console.clear
+
+        var htmldata =`
+            <ul>
+                <li>
+                    <h3>吳先生</h3>
+                    <p>我覺得這個耳機不好用
+                        <span>2023/04/01</span>
+                    </p>
+                </li>
+                <li>
+                    <h3>林先生</h3>
+                    <p>耳機還是喜歡入耳式
+                        <span>2023/04/01</span>
+                    </p>
+                </li>
+            </ul>
+        `
+        // 使用``頓號容許多行字串存在而不是使用""雙引號
+
+        var datasplit= htmldata.replace(/\n/g,"").match(/<li>(.*?)<\/li>/g) 
+        // 換行的表示方法為  \n 
+        //match 取出括號內物件 (.*?)指任意字串
+        var datas = []
+        console.log(datasplit)
+        for(i=0;i<datasplit.length;i++){
+            var name = datasplit[i].match(/<h3>(.*?)<\/h3>/)[1]
+            console.log(name)
+            
+            var content = datasplit[i].match(/<p>(.*?)<\/p>/)[1]
+            // console.log(content)
+
+            var contenttext = content.split("<span>")[0].trim()
+            console.log(contenttext)
+            
+            // .trim() 移除頭尾空白字符
+            //也可以寫成以下 比較短的方式也達到一樣的效果 
+            // var content = datasplit[i].match(/<p>(.*?)<\/p>/)[1].split("<span>")[0].trim()
+            // console.log(content)
+            
+            let date = content.match(/<span>(.*?)<\/span>/)[1]
+            console.log(date)
+
+
+            var commentobj = {
+                name: name,
+                feedback:contenttext,
+                date:date
+            } 
+            datas.push(commentobj)
+        }
+        console.log(commentobj)
+   </script>
+   
+</body>
+</html>

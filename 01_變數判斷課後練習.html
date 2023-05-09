@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_變數判斷</title>
+</head>
+<body>
+    <!-- 課後練習題目 -->
+    <!-- 一個便當80元，超過10個便當擇一個便當折價成70元，將數量(count)設定成一個變數，並用判斷式輸出對應價格。 -->
+    <script>
+        console.clear()
+        var price = 80
+        var count = 11
+        var total= price*count
+        var discount = 7/8
+        
+        if(count<10){
+            console.log("便當價格="+total+"元")
+        }else if(count>10){
+            console.log("便當價格="+total*discount+"元")
+        }
+    </script>
+</body>
+</html>

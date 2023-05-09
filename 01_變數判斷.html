@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01_變數判斷</title>
+</head>
+<body>
+    <!-- 課間變數練習 -->
+    <script>
+        console.clear()
+        var price = 1000
+        var discount = 0.8
+        var fee = 30
+        var total = price*discount+fee
+        var displayText="總價"+total+"元"
+        console.log(displayText)
+        
+        var ismember = true
+        var totalmember = total*0.9
+        if(ismember){
+            console.log("為會員")
+            console.log("會員價"+totalmember)
+        }else{
+            console.log("為非會員")
+        }
+
+        var pricenew = 600
+        if(pricenew > 500){
+            console.log("書比500貴")
+        }else if(pricenew >300){
+            console.log("書比300貴")
+        }else{
+            console.log("書比300便宜")
+        }
+    </script>
+</body>
+</html>

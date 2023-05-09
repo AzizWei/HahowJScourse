@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>03_陣列的操作與迴圈</title>
+</head>
+<body>
+   <!-- 課後練習題目 -->
+   <!-- 在經營一間美食餐廳的評鑑網站，顯示評價前，必須要把百分制輸出為五顆星，因此你需要將每一筆評價資料的grade(0-100)變成(1-5)並顯示 -->
+   <script>
+        var foods_all=[
+            {
+                name:"日式炒麵",
+                grade:18
+            },
+            {
+                name:"燒肉丼",
+                grade:35
+            },
+            {
+                name:"海鮮麵",
+                grade:47
+            },
+            {
+                name:"親子丼",
+                grade:77
+            },
+            {
+                name:"握壽司",
+                grade:89
+            },
+        ]
+        var restaurant=[]
+        for(var i=0;i<foods_all.length;i++){
+            if(foods_all[i].grade<20){
+                console.log(foods_all[i].name+"是一顆星")
+            }else if(foods_all[i].grade<40){
+                console.log(foods_all[i].name+"是兩顆星")
+            }else if(foods_all[i].grade<60){
+                console.log(foods_all[i].name+"是三顆星")
+            }else if(foods_all[i].grade<80){
+                console.log(foods_all[i].name+"是四顆星")
+            }else{
+                console.log(foods_all[i].name+"是五顆星")
+            }
+        }
+   </script>
+</body>
+</html>

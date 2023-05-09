@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>04_JS字串的處理</title>
+
+    <style>
+    </style>
+</head>
+<body>
+    <script>
+        //課後練習題目:氣象局的資料結合迴圈與字串處理成物件
+        
+        var htmldata = 
+        `<ul class="weather">
+            <li>
+                <h3>星期一</h3>
+                <h5>晴天</h5>
+            </li>
+            <li>
+                <h3>星期二</h3>
+                <h5>雨天</h5>
+            </li>
+            <li>
+                <h3>星期三</h3>
+                <h5>陰天</h5>
+            </li>
+        </ul>`
+        // console.log(htmldata)
+        var datasplit = htmldata.replace(/\n/g,"").match(/<li>(.*?)<\/li>/g)
+        // console.log(datasplit)
+
+        var data=[]  //要記得先放一個空陣列
+        for(var i=0;i<datasplit.length;i++){
+            var days = datasplit[i].match(/<h3>(.*?)<\/h3>/) [1]
+            // console.log(days)
+            var weather = datasplit[i].match(/<h5>(.*?)<\/h5>/)[1]
+            // console.log(weather)
+            var obj = {
+                day:days,
+                weather:weather
+            }
+            data.push(obj)  //把東西推進去空陣列裡面
+        }
+        console.log(data)
+    </script>
+   
+</body>
+</html>

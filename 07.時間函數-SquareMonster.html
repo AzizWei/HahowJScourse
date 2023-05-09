@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/SquareMonster.css">
+    <title>07.時間函數SquareMonster</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <div>
+    <h2 class="monsterText">
+        Hello<br>There
+    </h2>
+    <h3 class="ogText">Ahhh We'll eat you</h3>
+    </div>
+
+
+    <div class="monster">
+        <div class="eye">
+            <div class="eyeball"></div>
+        </div>
+        <div class="mouth"></div>
+    </div>
+    <div class="monster blue">
+        <div class="eye">
+            <div class="eyeball"></div>
+        </div>
+        <div class="mouth"></div>
+    </div>
+
+    <div class="pageLoading">
+        <div class="monster">
+            <div class="eye">
+                <div class="eyeball"></div>
+            </div>
+            <div class="mouth"></div>
+        </div>
+        <div class="loading">
+            <div class="bar"></div>
+        </div>
+    </div>
+
+
+    <script>
+        var percent = 0;
+        var timer = setInterval(function(){
+            $(".bar").css("width",percent+"%");
+            percent+=1;
+            if(percent>=100){
+                clearInterval(timer);
+            }
+        },30);
+    </script>
+</body>
+</html>

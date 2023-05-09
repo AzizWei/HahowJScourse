@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>05_函數模組化應用</title>
+    <style>
+        *{  
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        body{
+            background-color: #008080;
+        }
+        li{
+            width: 30px;
+            height: 30px;
+            border: 3px solid black;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="poker"></ul>
+   <script>
+        var num = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+        var suits=[
+            {
+                name:"spade",
+                color:"black",
+                img:"https://zh.wikipedia.org/zh-tw/%E6%89%91%E5%85%8B%E7%89%8C#/media/File:SuitSpades.svg"
+            },
+            {
+                name:"heart ",
+                color:"red",
+                img:"https://zh.wikipedia.org/zh-tw/%E6%89%91%E5%85%8B%E7%89%8C#/media/File:Suit_Hearts_(open_clipart).svg"
+            },
+            {
+                name:"diamond",
+                color:"red",
+                img:"https://zh.wikipedia.org/zh-tw/%E6%89%91%E5%85%8B%E7%89%8C#/media/File:SuitDiamonds.svg"
+            },
+            {
+                name:"club",
+                color:"black",
+                img:"https://zh.wikipedia.org/zh-tw/%E6%89%91%E5%85%8B%E7%89%8C#/media/File:SuitClubs.svg"
+            }, 
+        ]
+        function PokerHtml(num,suits){
+            for(var i=0;i<num.length;i++){
+                for(var j=0;j<suits.length;j++){
+                    var items =$("<li>")
+                        items.append("<p style='color:"+suits[j].color+"'>"+num[i]+"</p>");
+                        items.append("<img src='"+suits[j].img+"'>");
+                        items.append("<p style='color:"+suits[j].color+"'>"+num[i]+"</p>")
+
+                    $("ul#pokers").append(items)
+                }
+            }
+
+            return PokerHtml()
+        }
+   </script>
+</body>
+</html>

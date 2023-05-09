@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <title>05_函數模組化應用</title>
+
+<style>
+    .highlight{
+        background-color: yellow;
+        padding: 2px;
+    }
+    ul#books{
+        display: flex;
+    }
+    ul#books li{
+        list-style: none;
+        margin:0 20px;
+    }
+</style>
+</head>
+<body>
+    <ul id="books"></ul>
+    <ul id="fruits"></ul>
+   <script>
+        var item = ["apple","banana","guava"]
+
+        function showFruits(fruitsname){
+            console.log(fruitsname)
+            }
+        showFruits(item)
+
+        function add(a,b){
+            return a+b
+        }
+
+        var addResult = add(3,5)
+        console.log(addResult)
+
+        function getCircle(r){
+            var result = Math.PI*r*r
+            return result
+        }
+        console.log(result) 
+        //這無法作用 因為JS閉包的特性 此句不在其作用環境
+
+        var circlearea =getCircle(10)
+        console.log("半徑為10的圓面積:"+parseInt(circlearea))  
+        //parseInt()  取整數
+        
+        function cacualate(func,r){
+            console.log(func)
+            return func(r)
+        }
+
+        var result= cacualate(getCircle,20)   //引數可以是函數
+        console.log(result)
+
+        console.clear
+
+        var bookdatas =[
+            {
+                name:"獵魔士：最後的願望",
+                description:"那個時代，人們還需要獵魔士的保護……這個蒙昧初開、人類繁衍擴張的世界，王國正在興起，城鎮一一建立，惡魔怪物們漸漸被往邊陲驅趕，人們需要劍與魔法，建立一個不再有怪物的安全世界。傑洛特是其中的佼佼者，外號白狼，也被稱為利維亞的屠夫。他受過特殊的魔法和戰鬥訓練，擁有超凡的魔力與劍技。立誓保護無辜人類不受怪物傷害，也以獵殺怪物獲取賞金過活。",
+                price:320,
+                discount:0.79,
+            },
+            {
+                name:"獵魔士：命運之劍",
+                description:"獵魔士傑洛特為了保住女巫葉妮芙的性命，曾許下最後的願望，將兩人的命運緊緊相繫。自幼被剝奪情感、自認無法愛人的他最終選擇不告而別，踏上保護人類不被邪惡侵害的旅程。人們口耳相傳著，只有他能打敗翼蜥、為美人魚傳情、救出誤闖森林的紅衣女孩，並解開天鵝王子身上的詛咒；但傑洛特並不是只在乎報酬的冷血殺手，就像騎士一樣，獵魔士有自己的信條。",
+                price:350,
+                discount:0.79,
+            },
+            {
+                name:"獵魔士長篇 2 蔑視時代",
+                description:"夏夜異象——狂暴幽狩，為這場戰爭、這個蔑視一切的時代掀開序幕……巫師大會前夕，南北王國邊境衝突不斷，人類寄望地位不俗的巫師居中協調，再次維護和平正義；然而，巫師們正私下琢磨該如何合縱連橫、剷除異己。暗殺、背叛、政變的計中計，充滿魔力的傳奇盛宴，即將染上血腥……",
+                price:340,
+                discount:0.79,
+            },
+        ]
+        function highlightText(text,word){
+            var replaceRegExp = new RegExp("("+word+")","g")
+            // // RegExp 是系統默認函數 可以直接為正規表達式
+            return text.replace(replaceRegExp,"<span class='highlight'>$1</span>")
+        }
+
+        function showBook(book){
+            // $("ul#books").append("<li>"+book.name+"</li>")
+            var item = $("<li>")
+            var price =parseInt(book.price*book.discount) 
+            var textHighlightd = highlightText(book.description.slice(0,50),"獵魔士")
+            item.append("<h2>"+book.name+"</h2>")
+            item.append("<p>"+textHighlightd+"</p>")
+            item.append("<h3>價格："+price+"元</h3>")
+            $("ul#books").append(item)
+        }
+
+        for(var i=0;i<bookdatas.length;i++){
+            showBook(bookdatas[i])  
+        }
+
+
+        //水果
+        function generateItem(name,price,eng,discount){
+            return{
+                name:name,
+                price:price,
+                pricemember:price*0.5,
+                type:"normal",
+                eng:eng,
+                discount:discount
+            }
+        }
+
+        //陣列內加入函數及引數
+        var itemdatas = [
+            generateItem("蘋果",300,'apple',0.8),
+            generateItem("檸檬",400,'lemon',0.5),
+            generateItem("芭樂",300,'guava',0.8),
+        ]
+
+        function getItemHtml(item){
+            var result = $("<li>")
+                result.append("<h3>"+item.name+"</h3>")
+                result.append("<h4>"+item.price+"</h4>")
+
+                return result
+        }
+        
+        function printItems(items){
+            for(var i=0;i<items.length;i++){
+                var itemHtml = getItemHtml(items[i])
+                $("ul#fruits").append(itemHtml)
+            }
+        }
+        printItems(itemdatas)
+   </script>
+</body>
+</html>
