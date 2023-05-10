@@ -28,6 +28,7 @@ html, body {
   margin: 10px;
   position: relative;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
   animation: jumping 0.8s infinite alternate;
 }
 .monster .eye {
@@ -120,6 +121,14 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: 0.5s;
+  transition-delay: 0.5s;
+}
+.pageLoading.complete {
+  opacity: 0;
+}
+.pageLoading.complete .monster {
+  transform: scale(0.01) rotate(360deg);
 }
 
 .loading {
@@ -134,4 +143,4 @@ h3 {
   width: 0%;
   height: 100%;
   background-color: #E55A54;
-}
+}/*# sourceMappingURL=SquareMonster.css.map */

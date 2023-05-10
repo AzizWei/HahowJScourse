@@ -36,6 +36,8 @@ html,body{
     margin: 10px;
     position: relative;
     box-shadow: 0px 10px 20px rgba(black,.3);
+    transition: .5s;
+
     .eye{
         @include size(40%);
         border-radius: 50%;
@@ -136,7 +138,18 @@ h3{
     top: 0;
     @include flexCenter;
     flex-direction: column;
+    transition: .5s;
+    transition-delay: .5s;
+
+    &.complete{
+        opacity: 0;
+
+        .monster{
+            transform: scale(0.01) rotate(360deg);
+        }
+    }
 }
+
 .loading{
     @include size(200px,8px);
     background-color: #fff;
