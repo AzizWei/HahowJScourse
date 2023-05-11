@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css//08.hw.css">
+    <title>08.Jquery操作元素hw</title>
+
+
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <div id="target"></div>
+
+    <script>
+
+        $(function(){
+            for(var i=0; i<5; i++){
+                var $circle = $("<div class='circle'></div>");
+                $circle.css("width", 90 - i * 20 + "%");
+                $circle.css("height", 90 - i * 20 + "%");
+                // $circle.text(i);
+                $("#target").append($circle);
+                $(".circle:odd").addClass("white");
+
+                var circleNumber= 15+i*15;
+                $circle.text(circleNumber);
+                var imgurl="<img src='https://static.vecteezy.com/system/resources/previews/008/505/798/original/dart-illustration-png.png'>";
+
+                $("#target .circle").html(imgurl);
+            };
+        });
+        
+    </script>
+</body>
+</html>
