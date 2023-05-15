@@ -1,0 +1,103 @@
+$colorRed:#fe5e45;
+
+@mixin size($w,$h:$w){
+    width: $w;
+    height: $h;
+}
+
+@mixin ab_center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+// *{
+//     border: 1px solid #000;
+// }
+
+html,body{
+    @include size(100%);
+    margin: 0;
+    background-color: #eaeaea;
+}
+
+.target{
+    @include ab_center();
+}
+
+div[class ^="cir"]{
+    @include size(500px);
+    border-radius: 50%;
+    @include ab_center();
+    transition: .5s;
+
+    &.cir1{
+        @include size(100px);
+        z-index: 5;
+    }
+    &.cir2{
+        @include size(200px);
+        z-index: 4;
+    }
+    &.cir3{
+        @include size(300px);
+        z-index: 3;
+    }
+    &.cir4{
+        @include size(400px);
+        z-index: 2;
+    }
+    &.cir5{
+        @include size(500px);
+        z-index: 1;
+        border: 10px solid white;
+        box-shadow: 0px 0px 50px rgba(black,.3);
+    }
+
+    background-color:white;
+
+    &:nth-child(2n+1){
+        background-color: $colorRed;
+    }
+
+    &:active{
+        transition: 0s;
+        filter: brightness(80%);
+    }
+
+    &::before{
+        content: attr(data-label);
+        @include ab_center();
+        top: 20px;
+    }
+}
+
+
+
+.infos{
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    z-index: 10;
+
+    h1,h3{
+        margin: 0;
+    }
+
+    h1{
+        font-size: 50px;
+    }
+
+    h3{
+        opacity: .4;
+    }
+}
+
+
+// 改變模式
+.target.moving{
+    @keyframes moving{
+        0%
+    }
+}

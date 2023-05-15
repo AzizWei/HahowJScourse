@@ -18,21 +18,25 @@
 
         $(function(){
             for(var i=0; i<5; i++){
-                var $circle = $("<div class='circle'></div>");
+                var $circle = $("<div class='circle' id='circle" + i + "'></div>");
                 $circle.css("width", 90 - i * 20 + "%");
                 $circle.css("height", 90 - i * 20 + "%");
                 // $circle.text(i);
-                $("#target").append($circle);
+                $("#target").append($circle);    
                 $(".circle:odd").addClass("white");
 
                 var circleNumber= 15+i*15;
                 $circle.text(circleNumber);
-                var imgurl="<img src='https://static.vecteezy.com/system/resources/previews/008/505/798/original/dart-illustration-png.png'>";
 
-                $("#target .circle").html(imgurl);
+
+                // var select_t = "#target #circle" + i;
+                // $(select_t).append(imgurl);
             };
+            var imgurl="<img class='dart' src='https://static.vecteezy.com/system/resources/previews/008/505/798/original/dart-illustration-png.png'>";
+            $("#target .circle").append(imgurl);
         });
-        
+
+
     </script>
 </body>
 </html>
