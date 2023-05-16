@@ -6,12 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/09hw.css">
     <title>09.Jquery事件觸發hw</title>
+<style>
 
+</style>
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 
     <!-- 製作一計時器，可點案上下鍵設定時間，案開始(或鍵盤)可以倒數計時計時完畫面顏色會改變並且提示時間到了 -->
    
+    <div class="TimeCounter"></div>
+    <div class="CounterText"></div>
+
+    <script>
+        console.clear();
+
+        var time = 10;
+        $(".CounterText").text("P開始倒數　R重新倒數　↑增加秒數　↓減少秒數");
+        $(".TimeCounter").html("<h4>Time Counter</h4><h5>倒數: "+time+"秒</h5>");    
+
+ 
+        function countDown(){
+            $(".TimeCounter").html("<h4>Time Counter</h4><h5>倒數: "+time+"秒</h5>");    
+            time -=1;   
+            var timer = setInterval(countDown,1000);
+            if(time<0){
+                clearInterval(timer);
+            };
+        }
+
+        
+        function resetClock(){
+            time=10;
+        }
+
+        $(window).keydown(function(evt){
+            console.log(evt.key)
+            if(evt.key=="p"){
+                countDown();
+            }
+            if(evt.key=="r"){
+                time=10;
+            }
+            if(evt.key=="ArrowUp"){
+                time=time +1
+            }
+            if(evt.key=="ArrowDown"){
+                time=time -1
+            }
+        });
+    </script>
 </body>
 </html>

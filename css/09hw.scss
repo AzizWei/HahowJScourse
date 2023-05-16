@@ -1,0 +1,31 @@
+body,html{
+    height: 100%;
+    width: 100%;
+}
+
+@mixin size($w,$h:$w){
+    width: $w;
+    height: $h;
+}
+
+@mixin ab_center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.TimeCounter{
+    border: 5px solid black;
+    border-radius: 5px;
+    @include size(300px,150px );
+    @include ab_center;
+    text-align: center;
+    font-size: 25px;
+}
+
+.CounterText{
+    @include ab_center();
+    top: 70%;
+    font-size: 25px;
+    color: rgba(black, .6);
+}
