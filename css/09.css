@@ -83,5 +83,43 @@ div[class^=cir]::before {
 }
 
 .target.moving {
-  @keyframes moving;
+  animation: moving 1s infinite alternate;
+}
+@keyframes moving {
+  0% {
+    transform: translate(-200px);
+  }
+  100% {
+    transform: translate(200px);
+  }
+}
+
+.mouseSymbol {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+}
+.mouseSymbol::before, .mouseSymbol::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 8px;
+  background-color: #222;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.mouseSymbol::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.spot {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 50;
+  pointer-events: none;
 }

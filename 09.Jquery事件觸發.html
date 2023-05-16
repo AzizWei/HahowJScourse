@@ -23,6 +23,9 @@
         <div class="cir5" data-label="1"></div>
     </div>
 
+    <div class="mouseSymbol"></div>
+    <div class="mouseText"></div>
+
     <script>
         //click 監聽事件
         var score = 0;
@@ -42,6 +45,8 @@
 
         function resetGame(){
             score = 0;
+            $(".spot").remove();
+            $(".target").removeClass("moving");
             updateGame();
         }
 
@@ -55,6 +60,24 @@
                 $(".target").toggleClass("moving");
             }
         });
+
+
+        $(window).mousemove(function(evt){
+            $(".mouseText").text("("+evt.pageX+","+evt.pageY+")");
+
+            $(".mouseSymbol").css("left",evt.pageX+"px")
+                             .css("top",evt.pageY+"px");
+
+        })
+
+        $(".target").click(function(evt){
+            var spot = $("<div class='spot'></div>");
+            console.log(spot);
+            spot.css("left",evt.pageX-$(this).offset().left+"px").css("top",evt.pageY-$(this).offset().top+"px");
+
+            $(this).append(spot);
+        })
+
     </script>
 
 </body>

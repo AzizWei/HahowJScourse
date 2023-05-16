@@ -98,6 +98,38 @@ div[class ^="cir"]{
 // 改變模式
 .target.moving{
     @keyframes moving{
-        0%
+        0% {
+            transform: translate(-200px);
+        }
+        100%{
+            transform: translate(200px);
+        }
     }
+    animation: moving 1s infinite alternate;
+}
+
+.mouseSymbol{
+    position: absolute;
+    pointer-events: none;
+    z-index: 100;
+    &::before,&::after{
+        content: '';
+        display: block;
+        @include size(40px,8px);
+        background-color: #222;
+        @include ab_center()
+    }
+    &::after{
+        transform:translate(-50%,-50%) rotate(90deg);
+    }
+}
+
+
+.spot{
+    position: absolute;
+    @include size(15px);
+    border-radius: 50%;
+    background-color: rgba(black,.4);
+    z-index: 50;
+    pointer-events: none;
 }
